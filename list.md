@@ -66,4 +66,111 @@ a = [0 for _ in range(10)] #[0] * 10
 a = [0] * 10
 ```
 
+## initialize 2-d array
+
+```python
+# Incorrect Approach
+# [[None] * n] * m
+# x[0][0] = 34
+#  [[34, None, None, None, None], 
+#   [34, None, None, None, None], 
+#   [34, None, None, None, None], 
+#   [34, None, None, None, None], 
+#   [34, None, None, None, None]
+#  ]
+
+# Correct Approach
+rows, cols = 3, 2
+r = [[None for i in range(cols)] for j in range(rows)]
+r = [[0] * cols for _ in range(rows)]
+```
+
+## list sorting algorithm
+
+```
+a = [1,2,4,3,5]
+a.sort(reverse=True, key=lambda x: (x[0])) # change a
+b = sorted(a, reverse=True, key=lambda x: (x[0])) # not change a
+
+# partial sort
+a = range(20,0,-1) # [20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+a[10:15] = sorted(a[10:15])
+
+# 俄罗斯套娃 https://www.lintcode.com/problem/russian-doll-envelopes/description
+# 二维数组 (x[0]从小到大，x[1]从大到小)排序
+height = [a[1] for a in sorted(envelopes, key=lambda x: (x[0], -x[1]))]
+```
+
+Python3 does not support cmp function nativaly, it only supports key. To make it work, need to use from functools import cmp_to_key, and then embed compare function into cmp_to_key
+https://stackoverflow.com/questions/5213033/sort-list-of-list-with-custom-compare-function-in-python
+
+```python
+from functools import cmp_to_key
+
+def fitness(item):
+    return item[0]+item[1]+item[2]+item[3]
+
+
+def compare(item1, item2):
+    if fitness(item1) < fitness(item2):
+        return -1
+    elif fitness(item1) > fitness(item2):
+        return 1
+    else:
+        return 0
+
+
+l = [list(range(i, i+4)) for i in range(10,1,-1)]
+print(sorted(l, key=cmp_to_key(compare)))
+```
+
+## binary search package
+
+```python
+import bisect                                 # binary insert value k
+bisect.bisect_left(list, number, start, end)  # 插入后有序靠左，>=k的第一个
+bisect.bisect_right(list, number,start, end)  # 插入后有序靠右，>k的第一个
+```
+
+## string vs list
+
+```python
+str = 'abcdefgh'
+num_list = list(str) # ['a', 'b', ..., 'h']
+nums = []
+nums.extend(str) # ['a', 'b', ..., 'h']
+```
+
+## difference between .append() and +=[]
+
+```python
+# https://stackoverflow.com/questions/725782/in-python-what-is-the-difference-between-append-and/725882
+# In the example you gave, there is no difference, in terms of output, between append and +=. 
+# But there is a difference between append and + (which the question originally asked about).
+
+a = []
+id(a)  # 11814312
+a.append("hello")
+id(a)  # 11814312
+
+b = []
+id(b)  # 11828720
+c = b + ["hello"]
+id(c)  # 11833752
+
+b += ["hello"]
+id(b)  # 11828720
+```
+
+## Numpy array vs Python native List
+
+numpy array enforces the same type of elements.
+
+```python
+# numpy array: 2d array access
+np_baseball[i,j]   # i-row, j-col data
+np_baseball[:,0]   # the first column of data
+np_baseball.shape  # 2-d dimention
+```
+
 
