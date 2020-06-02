@@ -55,3 +55,16 @@ d.clear()               # empty the deque
 d.pop()                 # cannot pop from an empty deque
 queue = deque([root])   # root is TreeNode, deque initialized with []
 ```
+
+# Python Stack
+
+Use list to mock: https://www.w3schools.com/python/python_ref_list.asp
+
+```python
+a_list = ["apple", "banana", "cherry"]
+a_list.append("orange")  # add items 
+a_list.pop(index)        # remove the specified index
+a_list.pop()             # remove the last item if index is not specified 
+len(a_list)              # check list is empty    
+a_list[-1]               # get the last element
+```
