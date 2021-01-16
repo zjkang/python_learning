@@ -130,6 +130,16 @@ print(sorted(l, key=cmp_to_key(compare)))
 import bisect                                 # binary insert value k
 bisect.bisect_left(list, number, start, end)  # 插入后有序靠左，>=k的第一个
 bisect.bisect_right(list, number,start, end)  # 插入后有序靠右，>k的第一个
+
+import bisect
+
+a = [1,2,2,3,5,5]
+assert(bisect.bisect_left(a, 2) == 1)
+assert(bisect.bisect_left(a, 4) == 4)
+
+assert(bisect.bisect_right(a, 2) == 3)
+assert(bisect.bisect_right(a, 4) == 4)
+assert(bisect.bisect_right(a, 5) == 6)
 ```
 
 ## string vs list
