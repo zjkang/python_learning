@@ -86,7 +86,7 @@ dict = defaultdict(list) # int, set
 dict['key'].append(1) # otherwise need to check if 'key' not in dict, dict['key'] = []
 ```
 
-```
+```python
 def constant_factory(value):
     return lambda: value
 d = defaultdict(constant_factory('<missing>'))
