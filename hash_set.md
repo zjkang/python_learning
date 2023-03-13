@@ -90,6 +90,7 @@ dict['key'].append(1) # otherwise need to check if 'key' not in dict, dict['key'
 def constant_factory(value):
     return lambda: value
 d = defaultdict(constant_factory('<missing>'))
+d = defaultdict(lambda: None)
 d.update(name='John', action='ran')
 '%(name)s %(action)s to %(object)s' % d
 # 'John ran to <missing>'
