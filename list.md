@@ -83,6 +83,18 @@ a = [0] * 10
 rows, cols = 3, 2
 r = [[None for i in range(cols)] for j in range(rows)]
 r = [[0] * cols for _ in range(rows)]
+
+# Flattern 2d array
+array_2d = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+flattened = [element for row in array_2d for element in row]
+
+print(flattened)
+
 ```
 
 ## list sorting algorithm
