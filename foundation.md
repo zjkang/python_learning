@@ -24,6 +24,12 @@ import sys
 max = sys.maxsize
 min = -sys.maxsize -1
 
+# max or min float
+float('inf') <=> math.inf
+float('-inf')  <=> -math.inf
+
+
+
 # Generate random number <https://pythonspot.com/random-numbers/>
 import random
 for _ in range(10):
